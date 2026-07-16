@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Validate, preview, and package custom Codex pets in English or Chinese." />
+    <title>Codex Pet Lab</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="aurora aurora-one"></div>
+    <div class="aurora aurora-two"></div>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Codex Pet Lab home">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>Codex Pet Lab</span>
+        <span class="status-pill">v0.1</span>
+      </a>
+      <nav class="top-actions" aria-label="Page tools">
+        <a class="ghost-button repo-link" href="https://github.com/CosmicCoderDev/codex-pet-lab" target="_blank" rel="noreferrer">GitHub</a>
+        <div class="language-switch" role="group" aria-label="Language">
+          <button type="button" data-language="en" class="active">EN</button>
+          <button type="button" data-language="zh">中文</button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero shell">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="hero.eyebrow">CUSTOM PET WORKBENCH</p>
+          <h1 data-i18n="hero.title">Turn a sprite atlas into a real Codex companion.</h1>
+          <p class="hero-lede" data-i18n="hero.lede">Validate the official atlas contract, preview every state, edit metadata, and export an install-ready local pet package.</p>
+          <div class="hero-actions">
+            <button class="primary-button" type="button" id="heroUpload" data-i18n="hero.upload">Choose a sprite atlas</button>
+            <a class="ghost-button" href="#concepts" data-i18n="hero.explore">Explore original concepts</a>
+          </div>
+          <div class="contract-strip" aria-label="Supported formats">
+            <span><b>v1</b> 1536×1872</span>
+            <span><b>v2</b> 1536×2288</span>
+            <span><b>20 MiB</b> max</span>
+            <span><b>PNG/WebP</b></span>
+          </div>
+        </div>
+        <div class="hero-stage" aria-label="Pet concept stage">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="stage-glow"></div>
+          <img id="heroPet" src="./assets/nebby.svg" alt="Nebby original pet concept" />
+          <div class="speech-card">
+            <span class="live-dot"></span>
+            <div>
+              <strong id="heroPetName">Nebby</strong>
+              <small data-i18n="hero.conceptBadge">Original concept · not an atlas</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell section" id="concepts">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" data-i18n="concepts.eyebrow">START WITH A PERSONALITY</p>
+            <h2 data-i18n="concepts.title">Four original directions</h2>
+          </div>
+          <p data-i18n="concepts.note">These are identity presets for planning. A preset only becomes installable after a real animated atlas passes validation.</p>
+        </div>
+        <div class="concept-grid" id="conceptGrid">
+          <button type="button" class="concept-card active" data-concept="nebby">
+            <span class="concept-art nebby"><img src="./assets/nebby.svg" alt="" /></span>
+            <span class="concept-meta"><strong>Nebby</strong><small data-i18n="concepts.nebby">Quiet cosmic cat</small></span>
+            <span class="select-mark">✓</span>
+          </button>
+          <button type="button" class="concept-card" data-concept="byte">
+            <span class="concept-art byte"><img src="./assets/byte.svg" alt="" /></span>
+            <span class="concept-meta"><strong>Byte</strong><small data-i18n="concepts.byte">Curious code bot</small></span>
+            <span class="select-mark">✓</span>
+          </button>
+          <button type="button" class="concept-card" data-concept="momo">
+            <span class="concept-art momo"><img src="./assets/momo.svg" alt="" /></span>
+            <span class="concept-meta"><strong>Momo</strong><small data-i18n="concepts.momo">Cheerful candy fox</small></span>
+            <span class="select-mark">✓</span>
+          </button>
+          <button type="button" class="concept-card" data-concept="ember">
+            <span class="concept-art ember"><img src="./assets/ember.svg" alt="" /></span>
+            <span class="concept-meta"><strong>Ember</strong><small data-i18n="concepts.ember">Focused flame spirit</small></span>
+            <span class="select-mark">✓</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="shell section studio-section" id="studio">
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow" data-i18n="studio.eyebrow">VALIDATE · PREVIEW · PACKAGE</p>
+            <h2 data-i18n="studio.title">Pet studio</h2>
+          </div>
+          <div class="step-pills" aria-label="Workflow">
+            <span class="active">1 <span data-i18n="studio.step1">Atlas</span></span>
+            <span>2 <span data-i18n="studio.step2">Identity</span></span>
+            <span>3 <span data-i18n="studio.step3">Export</span></span>
+          </div>
+        </div>
+
+        <div class="studio-grid">
+          <div class="panel upload-panel">
+            <div class="panel-title">
+              <span class="number-chip">01</span>
+              <div><h3 data-i18n="upload.title">Sprite atlas</h3><p data-i18n="upload.subtitle">Drop a transparent PNG or WebP here.</p></div>
+            </div>
+            <input id="atlasInput" type="file" accept="image/png,image/webp,.png,.webp" hidden />
+            <button type="button" class="drop-zone" id="dropZone">
+              <span class="upload-icon" aria-hidden="true">↑</span>
+              <strong data-i18n="upload.action">Choose or drop an atlas</strong>
+              <small data-i18n="upload.requirements">v1 1536×1872 or v2 1536×2288 · up to 20 MiB</small>
+            </button>
+            <div class="validation-list" id="validationList" aria-live="polite">
+              <div data-check="type"><span>○</span><p><b data-i18n="checks.type">File type</b><small>PNG / WebP</small></p></div>
+              <div data-check="size"><span>○</span><p><b data-i18n="checks.size">Atlas size</b><small>1536×1872 / 1536×2288</small></p></div>
+              <div data-check="weight"><span>○</span><p><b data-i18n="checks.weight">File weight</b><small>≤ 20 MiB</small></p></div>
+              <div data-check="alpha"><span>○</span><p><b data-i18n="checks.alpha">Transparency</b><small data-i18n="checks.alphaNote">Transparent background required</small></p></div>
+              <div data-check="unused"><span>○</span><p><b data-i18n="checks.unused">Unused cells</b><small data-i18n="checks.unusedNote">Must remain fully transparent</small></p></div>
+            </div>
+          </div>
+
+          <div class="panel preview-panel">
+            <div class="panel-title preview-title">
+              <span class="number-chip">02</span>
+              <div><h3 data-i18n="preview.title">Animation preview</h3><p id="formatLabel" data-i18n="preview.waiting">Waiting for a valid atlas</p></div>
+              <button type="button" class="icon-button" id="toggleBackdrop" aria-label="Toggle preview background">◐</button>
+            </div>
+            <div class="preview-stage checkerboard" id="previewStage">
+              <canvas id="previewCanvas" width="192" height="208" aria-label="Pet animation preview"></canvas>
+              <img id="conceptFallback" src="./assets/nebby.svg" alt="Selected pet concept" />
+              <span class="preview-floor"></span>
+            </div>
+            <div class="state-tabs" id="stateTabs"></div>
+            <div class="timeline">
+              <span data-i18n="preview.frame">Frame</span>
+              <div><i id="timelineProgress"></i></div>
+              <strong id="frameLabel">— / —</strong>
+            </div>
+          </div>
+
+          <div class="panel identity-panel">
+            <div class="panel-title">
+              <span class="number-chip">03</span>
+              <div><h3 data-i18n="identity.title">Pet identity</h3><p data-i18n="identity.subtitle">Metadata saved in pet.json.</p></div>
+            </div>
+            <label><span data-i18n="identity.id">Pet ID</span><input id="petId" value="nebby" autocomplete="off" /><small data-i18n="identity.idHelp">Lowercase letters, numbers, and hyphens.</small></label>
+            <label><span data-i18n="identity.name">Display name</span><input id="displayName" value="Nebby" autocomplete="off" /></label>
+            <label><span data-i18n="identity.description">Description</span><textarea id="description" rows="3">A quiet cosmic cat for deep-focus coding sessions.</textarea></label>
+            <div class="manifest-preview">
+              <div><span>pet.json</span><button type="button" id="copyManifest" data-i18n="identity.copy">Copy</button></div>
+              <pre id="manifestCode"></pre>
+            </div>
+          </div>
+
+          <div class="panel export-panel">
+            <div class="panel-title">
+              <span class="number-chip">04</span>
+              <div><h3 data-i18n="export.title">Export package</h3><p data-i18n="export.subtitle">No upload: processing stays in your browser.</p></div>
+            </div>
+            <div class="package-tree">
+              <span>📁 <b id="folderName">nebby</b></span>
+              <span>├─ pet.json</span>
+              <span>└─ spritesheet.webp</span>
+            </div>
+            <button class="primary-button wide" type="button" id="exportFolder" disabled data-i18n="export.folder">Export pet folder</button>
+            <button class="ghost-button wide" type="button" id="downloadFiles" disabled data-i18n="export.files">Download two files</button>
+            <p class="export-status" id="exportStatus" data-i18n="export.locked">Add a valid atlas to unlock export.</p>
+            <details>
+              <summary data-i18n="export.installTitle">Install on Windows</summary>
+              <p data-i18n="export.installNote">After export, run this from the repository root:</p>
+              <code id="installCommand">.\scripts\install-pet.ps1 -SourceDir "C:\path\to\nebby"</code>
+              <button type="button" class="tiny-button" id="copyInstall" data-i18n="export.copyCommand">Copy command</button>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="shell section trust-section">
+        <article><span>01</span><h3 data-i18n="trust.localTitle">Local by design</h3><p data-i18n="trust.localText">Your sprite atlas never leaves the browser.</p></article>
+        <article><span>02</span><h3 data-i18n="trust.realTitle">Real contract checks</h3><p data-i18n="trust.realText">Dimensions, alpha, empty slots, metadata, and v2 format are checked.</p></article>
+        <article><span>03</span><h3 data-i18n="trust.openTitle">Open and bilingual</h3><p data-i18n="trust.openText">MIT-licensed, English-first, with complete Simplified Chinese UI and docs.</p></article>
+      </section>
+    </main>
+
+    <footer class="shell footer">
+      <span>Codex Pet Lab · MIT</span>
+      <span data-i18n="footer.note">Original concepts only. Not affiliated with celebrity likenesses or third-party characters.</span>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

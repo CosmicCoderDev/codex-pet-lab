@@ -1,0 +1,20 @@
+{
+  "name": "codex-pet-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A bilingual browser studio for validating, previewing, and packaging Codex custom pets.",
+  "scripts": {
+    "serve": "node scripts/serve.mjs",
+    "test": "node tests/contract.test.mjs",
+    "check": "node scripts/check-project.mjs"
+  },
+  "keywords": [
+    "codex",
+    "codex-pet",
+    "spritesheet",
+    "pixel-art",
+    "bilingual"
+  ],
+  "license": "MIT"
+}
