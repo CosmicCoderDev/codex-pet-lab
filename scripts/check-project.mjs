@@ -18,4 +18,10 @@ if (!html.includes('lang="en"') || !html.includes("data-i18n")) {
   throw new Error("The bilingual UI markers are missing.");
 }
 
+const app = await readFile(new URL("../app.js", import.meta.url), "utf8");
+const conceptCount = (app.match(/category: "/g) || []).length;
+if (conceptCount < 14 || !app.includes("importLocalPackFolders")) {
+  throw new Error("The anime concept shelf or local-pack importer is incomplete.");
+}
+
 console.log(`Project check passed (${required.length} required files).`);

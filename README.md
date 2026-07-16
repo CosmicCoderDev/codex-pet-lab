@@ -6,12 +6,15 @@ Codex Pet Lab is an English-first, bilingual browser studio for turning a finish
 
 It validates the real atlas shape, previews every standard animation state, checks transparent unused cells, edits `pet.json`, and exports the two files Codex expects. All image processing stays in the browser.
 
-> This repository does not bundle fake “pets” made from static portraits. The four built-in characters are original planning concepts. They become installable only after a complete animated atlas passes validation.
+> This repository does not bundle fake “pets” made from static portraits. The fourteen built-in characters are original planning concepts. They become installable only after a complete animated atlas passes validation.
 
 ## What it does
 
 - English and Simplified Chinese UI, with English as the default
-- Four original identity directions: Nebby, Byte, Momo, and Ember
+- Fourteen original anime, sports, fantasy, sci-fi, and mascot identity directions
+- Category filters for fighters, sports, ninja, fantasy, sci-fi, and cute characters
+- Private local character-pack import from a completed `pet.json + spritesheet` folder
+- Imported local packs persist in this browser through IndexedDB and never enter the GitHub repository
 - Drag-and-drop validation for transparent PNG/WebP atlases
 - Standard v1 support: `1536×1872`, 8 columns × 9 rows
 - Extended v2 support: `1536×2288`, 8 columns × 11 rows, including 16 look directions
@@ -95,6 +98,7 @@ The current public ChatGPT documentation also describes custom pet creation and 
 
 - Concepts and source artwork in this repository are original.
 - Do not publish celebrity likenesses, copyrighted characters, or third-party artwork without permission.
+- Copyrighted character packs may be imported locally only when you have the necessary rights or your use is otherwise permitted; the project does not redistribute them.
 - Passing structural validation does not replace visual QA. Always review identity consistency, motion, direction, clipping, and effects before sharing a pet.
 - This is a community project and is not an official OpenAI product.
 

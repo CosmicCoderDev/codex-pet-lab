@@ -19,12 +19,39 @@ const translations = {
     "hero.explore": "Explore original concepts",
     "hero.conceptBadge": "Original concept · not an atlas",
     "concepts.eyebrow": "START WITH A PERSONALITY",
-    "concepts.title": "Four original directions",
-    "concepts.note": "These are identity presets for planning. A preset only becomes installable after a real animated atlas passes validation.",
+    "concepts.title": "An original anime character shelf",
+    "concepts.note": "Fourteen original directions for planning. They borrow broad anime energy, never protected names, costumes, or character likenesses.",
     "concepts.nebby": "Quiet cosmic cat",
     "concepts.byte": "Curious code bot",
     "concepts.momo": "Cheerful candy fox",
     "concepts.ember": "Focused flame spirit",
+    "concepts.kairo": "Cosmic energy fighter",
+    "concepts.rook": "Red-haired court ace",
+    "concepts.shino": "Quiet shadow runner",
+    "concepts.aster": "Frost blade guardian",
+    "concepts.nova": "Neon mech pilot",
+    "concepts.lumi": "Starlight spellcaster",
+    "concepts.onyx": "Midnight rival",
+    "concepts.sora": "Goggle sky runner",
+    "concepts.mira": "Cyber stage idol",
+    "concepts.tora": "Street boxing captain",
+    "filter.all": "All",
+    "filter.fighter": "Fighters",
+    "filter.sports": "Sports",
+    "filter.ninja": "Ninja",
+    "filter.fantasy": "Fantasy",
+    "filter.scifi": "Sci-fi",
+    "filter.cute": "Cute",
+    "local.eyebrow": "PRIVATE LOCAL CHARACTER PACKS",
+    "local.title": "Bring your own characters",
+    "local.note": "Import licensed or personal character packs on this device. Files are stored in this browser only and are never added to the public repository.",
+    "local.folderTitle": "Choose a completed pet folder",
+    "local.folderHint": "The folder must contain pet.json and its referenced PNG/WebP spritesheet.",
+    "local.import": "Import local pack",
+    "local.empty": "No local character packs yet.",
+    "local.use": "Use pack",
+    "local.remove": "Remove",
+    "local.version": "Codex {format} pet",
     "studio.eyebrow": "VALIDATE · PREVIEW · PACKAGE",
     "studio.title": "Pet studio",
     "studio.step1": "Atlas",
@@ -72,6 +99,9 @@ const translations = {
     "toast.exported": "Pet folder exported.",
     "toast.downloaded": "Both package files were downloaded.",
     "toast.folderFallback": "Folder export is unavailable here. Use the two-file download instead.",
+    "toast.packImported": "Imported {count} local character pack(s).",
+    "toast.packInvalid": "Import failed: {reason}",
+    "toast.packRemoved": "Local character pack removed.",
     "status.valid": "{format} · {width}×{height} · valid",
     "status.invalid": "Atlas needs attention",
     "state.idle": "Idle",
@@ -93,12 +123,39 @@ const translations = {
     "hero.explore": "查看原创宠物构思",
     "hero.conceptBadge": "原创构思 · 不是可安装图集",
     "concepts.eyebrow": "先选择宠物性格",
-    "concepts.title": "四种原创方向",
-    "concepts.note": "这些预设用于确定角色形象；只有真实动画图集通过校验后，才能作为宠物安装。",
+    "concepts.title": "一整套原创动漫人物",
+    "concepts.note": "共 14 个原创人物方向，只借鉴宽泛的动漫气质，不复制受保护的姓名、服装或角色形象。",
     "concepts.nebby": "安静的星云猫",
     "concepts.byte": "好奇的代码机器人",
     "concepts.momo": "活泼的糖果狐",
     "concepts.ember": "专注的火焰精灵",
+    "concepts.kairo": "宇宙能量战士",
+    "concepts.rook": "红发球场王牌",
+    "concepts.shino": "沉默的暗影忍者",
+    "concepts.aster": "寒霜剑士",
+    "concepts.nova": "霓虹机甲驾驶员",
+    "concepts.lumi": "星光魔法师",
+    "concepts.onyx": "午夜宿敌",
+    "concepts.sora": "护目镜天空跑者",
+    "concepts.mira": "赛博舞台偶像",
+    "concepts.tora": "街头拳击队长",
+    "filter.all": "全部",
+    "filter.fighter": "格斗",
+    "filter.sports": "运动",
+    "filter.ninja": "忍者",
+    "filter.fantasy": "奇幻",
+    "filter.scifi": "科幻",
+    "filter.cute": "可爱",
+    "local.eyebrow": "仅保存在本地的角色包",
+    "local.title": "导入你自己的角色",
+    "local.note": "可在本机导入已获许可或个人使用的角色包。文件只保存在当前浏览器，不会进入 GitHub 公开仓库。",
+    "local.folderTitle": "选择一个完整宠物文件夹",
+    "local.folderHint": "文件夹中必须包含 pet.json 和其中引用的 PNG/WebP 图集。",
+    "local.import": "导入本地角色包",
+    "local.empty": "还没有本地角色包。",
+    "local.use": "使用角色包",
+    "local.remove": "移除",
+    "local.version": "Codex {format} 宠物",
     "studio.eyebrow": "校验 · 预览 · 打包",
     "studio.title": "宠物工作室",
     "studio.step1": "图集",
@@ -146,6 +203,9 @@ const translations = {
     "toast.exported": "宠物文件夹已导出。",
     "toast.downloaded": "两个宠物包文件已下载。",
     "toast.folderFallback": "当前环境不支持文件夹导出，请改用下载两个文件。",
+    "toast.packImported": "已导入 {count} 个本地角色包。",
+    "toast.packInvalid": "导入失败：{reason}",
+    "toast.packRemoved": "本地角色包已移除。",
     "status.valid": "{format} · {width}×{height} · 校验通过",
     "status.invalid": "图集需要修正",
     "state.idle": "待机",
@@ -162,11 +222,23 @@ const translations = {
 };
 
 const concepts = {
-  nebby: { name: "Nebby", id: "nebby", image: "./assets/nebby.svg", description: "A quiet cosmic cat for deep-focus coding sessions.", zhDescription: "陪你沉浸编码的安静星云猫。" },
-  byte: { name: "Byte", id: "byte", image: "./assets/byte.svg", description: "A curious code bot that lights up for new ideas.", zhDescription: "遇到新点子就会亮起来的好奇代码机器人。" },
-  momo: { name: "Momo", id: "momo", image: "./assets/momo.svg", description: "A cheerful candy fox for playful building days.", zhDescription: "让创作更轻松愉快的糖果狐。" },
-  ember: { name: "Ember", id: "ember", image: "./assets/ember.svg", description: "A focused flame spirit for shipping the final fix.", zhDescription: "陪你专注完成最后修复的火焰精灵。" }
+  nebby: { name: "Nebby", id: "nebby", category: "cute", color: "#4e3ca0", image: "./assets/nebby.svg", description: "A quiet cosmic cat for deep-focus coding sessions.", zhDescription: "陪你沉浸编码的安静星云猫。" },
+  byte: { name: "Byte", id: "byte", category: "scifi", color: "#116b72", image: "./assets/byte.svg", description: "A curious code bot that lights up for new ideas.", zhDescription: "遇到新点子就会亮起来的好奇代码机器人。" },
+  momo: { name: "Momo", id: "momo", category: "cute", color: "#9f3f67", image: "./assets/momo.svg", description: "A cheerful candy fox for playful building days.", zhDescription: "让创作更轻松愉快的糖果狐。" },
+  ember: { name: "Ember", id: "ember", category: "fantasy", color: "#a64025", image: "./assets/ember.svg", description: "A focused flame spirit for shipping the final fix.", zhDescription: "陪你专注完成最后修复的火焰精灵。" },
+  kairo: { name: "Kairo", id: "kairo", category: "fighter", color: "#314fa5", image: "./assets/kairo.svg", description: "A cosmic energy fighter who trains between builds.", zhDescription: "在每次构建间隙修炼的宇宙能量战士。" },
+  rook: { name: "Rook", id: "rook", category: "sports", color: "#9f314d", image: "./assets/rook.svg", description: "A red-haired court ace who never gives up on the last play.", zhDescription: "最后一球也绝不放弃的红发球场王牌。" },
+  shino: { name: "Shino", id: "shino", category: "ninja", color: "#49405f", image: "./assets/shino.svg", description: "A quiet shadow runner for stealthy refactors.", zhDescription: "擅长安静完成重构的暗影忍者。" },
+  aster: { name: "Aster", id: "aster", category: "fantasy", color: "#3d7794", image: "./assets/aster.svg", description: "A frost blade guardian with a precise review eye.", zhDescription: "审查精准的寒霜剑士。" },
+  nova: { name: "Nova", id: "nova", category: "scifi", color: "#8c4f98", image: "./assets/nova.svg", description: "A neon mech pilot ready for high-risk deployments.", zhDescription: "随时准备执行高风险部署的霓虹机甲驾驶员。" },
+  lumi: { name: "Lumi", id: "lumi", category: "fantasy", color: "#7652a8", image: "./assets/lumi.svg", description: "A starlight spellcaster who turns bugs into sparks.", zhDescription: "把 Bug 变成星光的魔法师。" },
+  onyx: { name: "Onyx", id: "onyx", category: "fighter", color: "#5c263c", image: "./assets/onyx.svg", description: "A midnight rival who challenges every assumption.", zhDescription: "会质疑每个假设的午夜宿敌。" },
+  sora: { name: "Sora", id: "sora", category: "sports", color: "#357c62", image: "./assets/sora.svg", description: "A goggle-wearing sky runner built for fast iteration.", zhDescription: "为快速迭代而生的护目镜天空跑者。" },
+  mira: { name: "Mira", id: "mira", category: "scifi", color: "#8e3c82", image: "./assets/mira.svg", description: "A cyber stage idol who keeps the team in rhythm.", zhDescription: "让团队始终保持节奏的赛博舞台偶像。" },
+  tora: { name: "Tora", id: "tora", category: "fighter", color: "#8c5a2d", image: "./assets/tora.svg", description: "A street boxing captain who punches through blockers.", zhDescription: "一拳打穿阻塞问题的街头拳击队长。" }
 };
+
+const conceptFilters = ["all", "fighter", "sports", "ninja", "fantasy", "scifi", "cute"];
 
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
@@ -176,12 +248,17 @@ const elements = {
   stateTabs: $("#stateTabs"), formatLabel: $("#formatLabel"), frameLabel: $("#frameLabel"), timeline: $("#timelineProgress"),
   petId: $("#petId"), displayName: $("#displayName"), description: $("#description"), manifestCode: $("#manifestCode"),
   folderName: $("#folderName"), installCommand: $("#installCommand"), exportFolder: $("#exportFolder"), downloadFiles: $("#downloadFiles"),
-  exportStatus: $("#exportStatus"), heroPet: $("#heroPet"), heroPetName: $("#heroPetName"), toast: $("#toast")
+  exportStatus: $("#exportStatus"), heroPet: $("#heroPet"), heroPetName: $("#heroPetName"), toast: $("#toast"),
+  conceptGrid: $("#conceptGrid"), conceptFilters: $("#conceptFilters"), packFolderInput: $("#packFolderInput"),
+  localPackGrid: $("#localPackGrid"), localPackEmpty: $("#localPackEmpty")
 };
 
 const state = {
   language: localStorage.getItem("codex-pet-lab-language") || "en",
   concept: "nebby",
+  conceptFilter: "all",
+  localPacks: new Map(),
+  activeLocalPack: null,
   file: null,
   image: null,
   objectUrl: null,
@@ -206,7 +283,10 @@ function setLanguage(language) {
   $$('[data-i18n]').forEach((node) => { node.textContent = t(node.dataset.i18n); });
   $$('[data-language]').forEach((button) => button.classList.toggle("active", button.dataset.language === language));
   const concept = concepts[state.concept];
-  if (!state.file) elements.description.value = language === "zh" ? concept.zhDescription : concept.description;
+  if (!state.file && concept) elements.description.value = language === "zh" ? concept.zhDescription : concept.description;
+  renderConceptFilters();
+  renderConcepts();
+  renderLocalPacks();
   renderStateTabs();
   refreshStatus();
   updateManifest();
@@ -214,6 +294,7 @@ function setLanguage(language) {
 
 function selectConcept(id) {
   state.concept = id;
+  state.activeLocalPack = null;
   const concept = concepts[id];
   $$('.concept-card').forEach((card) => card.classList.toggle("active", card.dataset.concept === id));
   elements.heroPet.src = concept.image;
@@ -224,6 +305,54 @@ function selectConcept(id) {
     elements.displayName.value = concept.name;
     elements.description.value = state.language === "zh" ? concept.zhDescription : concept.description;
     updateManifest();
+  }
+}
+
+function renderConceptFilters() {
+  elements.conceptFilters.replaceChildren();
+  for (const filter of conceptFilters) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = t(`filter.${filter}`);
+    button.classList.toggle("active", state.conceptFilter === filter);
+    button.addEventListener("click", () => {
+      state.conceptFilter = filter;
+      renderConceptFilters();
+      renderConcepts();
+    });
+    elements.conceptFilters.append(button);
+  }
+}
+
+function renderConcepts() {
+  elements.conceptGrid.replaceChildren();
+  const visible = Object.values(concepts).filter((concept) => state.conceptFilter === "all" || concept.category === state.conceptFilter);
+  for (const concept of visible) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "concept-card";
+    button.dataset.concept = concept.id;
+    button.classList.toggle("active", state.concept === concept.id && !state.activeLocalPack);
+    const art = document.createElement("span");
+    art.className = "concept-art";
+    art.style.background = `radial-gradient(circle, ${concept.color}, #111522 72%)`;
+    const image = document.createElement("img");
+    image.src = concept.image;
+    image.alt = "";
+    art.append(image);
+    const meta = document.createElement("span");
+    meta.className = "concept-meta";
+    const name = document.createElement("strong");
+    name.textContent = concept.name;
+    const detail = document.createElement("small");
+    detail.textContent = t(`concepts.${concept.id}`);
+    meta.append(name, detail);
+    const mark = document.createElement("span");
+    mark.className = "select-mark";
+    mark.textContent = "✓";
+    button.append(art, meta, mark);
+    button.addEventListener("click", () => selectConcept(concept.id));
+    elements.conceptGrid.append(button);
   }
 }
 
@@ -447,8 +576,168 @@ async function downloadFiles() {
   showToast(t("toast.downloaded"));
 }
 
+const LOCAL_PACK_DB = "codex-pet-lab";
+const LOCAL_PACK_STORE = "local-packs";
+
+function openLocalPackDatabase() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(LOCAL_PACK_DB, 1);
+    request.onupgradeneeded = () => {
+      if (!request.result.objectStoreNames.contains(LOCAL_PACK_STORE)) {
+        request.result.createObjectStore(LOCAL_PACK_STORE, { keyPath: "id" });
+      }
+    };
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function saveLocalPack(pack) {
+  if (!window.indexedDB) return;
+  const database = await openLocalPackDatabase();
+  await new Promise((resolve, reject) => {
+    const request = database.transaction(LOCAL_PACK_STORE, "readwrite").objectStore(LOCAL_PACK_STORE).put(pack);
+    request.onsuccess = () => resolve();
+    request.onerror = () => reject(request.error);
+  });
+  database.close();
+}
+
+async function removeStoredLocalPack(id) {
+  if (!window.indexedDB) return;
+  const database = await openLocalPackDatabase();
+  await new Promise((resolve, reject) => {
+    const request = database.transaction(LOCAL_PACK_STORE, "readwrite").objectStore(LOCAL_PACK_STORE).delete(id);
+    request.onsuccess = () => resolve();
+    request.onerror = () => reject(request.error);
+  });
+  database.close();
+}
+
+async function restoreLocalPacks() {
+  if (!window.indexedDB) return;
+  try {
+    const database = await openLocalPackDatabase();
+    const packs = await new Promise((resolve, reject) => {
+      const request = database.transaction(LOCAL_PACK_STORE).objectStore(LOCAL_PACK_STORE).getAll();
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error);
+    });
+    database.close();
+    for (const pack of packs) state.localPacks.set(pack.id, pack);
+    renderLocalPacks();
+  } catch (error) {
+    console.warn("Local pack storage is unavailable.", error);
+  }
+}
+
+function createCurrentThumbnail() {
+  const canvas = document.createElement("canvas");
+  canvas.width = CELL.width;
+  canvas.height = CELL.height;
+  const context = canvas.getContext("2d");
+  context.imageSmoothingEnabled = false;
+  context.drawImage(state.image, 0, 0, CELL.width, CELL.height, 0, 0, CELL.width, CELL.height);
+  return canvas.toDataURL("image/png");
+}
+
+async function selectLocalPack(id) {
+  const pack = state.localPacks.get(id);
+  if (!pack) return;
+  await loadAtlas(pack.sheet);
+  if (!state.valid) throw new Error("Stored atlas no longer passes validation.");
+  state.activeLocalPack = id;
+  state.concept = null;
+  elements.petId.value = pack.manifest.id;
+  elements.displayName.value = pack.manifest.displayName;
+  elements.description.value = pack.manifest.description;
+  elements.heroPet.src = pack.thumbnail;
+  elements.heroPetName.textContent = pack.manifest.displayName;
+  renderConcepts();
+  renderLocalPacks();
+  updateManifest();
+  location.hash = "studio";
+}
+
+function renderLocalPacks() {
+  elements.localPackGrid.replaceChildren();
+  elements.localPackEmpty.hidden = state.localPacks.size > 0;
+  for (const pack of state.localPacks.values()) {
+    const card = document.createElement("article");
+    card.className = "local-pack-card";
+    card.classList.toggle("active", state.activeLocalPack === pack.id);
+    const image = document.createElement("img");
+    image.src = pack.thumbnail;
+    image.alt = "";
+    const copy = document.createElement("div");
+    const name = document.createElement("strong");
+    name.textContent = pack.manifest.displayName;
+    const detail = document.createElement("small");
+    detail.textContent = t("local.version", { format: pack.formatKey });
+    copy.append(name, detail);
+    const actions = document.createElement("div");
+    const use = document.createElement("button");
+    use.type = "button";
+    use.textContent = t("local.use");
+    use.addEventListener("click", () => selectLocalPack(pack.id).catch((error) => showToast(error.message)));
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.className = "danger-text";
+    remove.textContent = t("local.remove");
+    remove.addEventListener("click", async () => {
+      await removeStoredLocalPack(pack.id);
+      state.localPacks.delete(pack.id);
+      if (state.activeLocalPack === pack.id) state.activeLocalPack = null;
+      renderLocalPacks();
+      showToast(t("toast.packRemoved"));
+    });
+    actions.append(use, remove);
+    card.append(image, copy, actions);
+    elements.localPackGrid.append(card);
+  }
+}
+
+async function importLocalPackFolders(files) {
+  const allFiles = [...files];
+  const manifests = allFiles.filter((file) => file.name.toLowerCase() === "pet.json");
+  if (!manifests.length) throw new Error("pet.json was not found.");
+  let imported = 0;
+  let lastImportedId = null;
+  for (const manifestFile of manifests) {
+    const manifest = JSON.parse(await manifestFile.text());
+    const metadata = validateMetadata({ id: manifest.id ?? "", displayName: manifest.displayName ?? "", description: manifest.description ?? "" });
+    if (!metadata.ok) throw new Error(`${manifestFile.webkitRelativePath}: invalid metadata.`);
+    const rawSheetPath = String(manifest.spritesheetPath || "spritesheet.webp").replaceAll("\\", "/");
+    const sheetParts = rawSheetPath.split("/").filter((part) => part && part !== ".");
+    if (rawSheetPath.startsWith("/") || sheetParts.includes("..")) throw new Error("Unsafe spritesheetPath in pet.json.");
+    const sheetPath = sheetParts.join("/");
+    const base = manifestFile.webkitRelativePath.slice(0, -manifestFile.name.length);
+    const expectedPath = `${base}${sheetPath}`.toLowerCase();
+    const sheet = allFiles.find((file) => file.webkitRelativePath.toLowerCase() === expectedPath);
+    if (!sheet) throw new Error(`${sheetPath} was not found beside pet.json.`);
+    await loadAtlas(sheet);
+    if (!state.valid || !state.format) throw new Error(`${manifest.displayName}: the spritesheet failed contract validation.`);
+    if (state.format.key === "v2" && manifest.spriteVersionNumber !== 2) throw new Error(`${manifest.displayName}: v2 requires spriteVersionNumber: 2.`);
+    if (state.format.key === "v1" && manifest.spriteVersionNumber === 2) throw new Error(`${manifest.displayName}: v1 dimensions cannot declare spriteVersionNumber: 2.`);
+    const pack = {
+      id: metadata.normalizedId,
+      manifest: { id: metadata.normalizedId, displayName: manifest.displayName.trim(), description: manifest.description.trim() },
+      formatKey: state.format.key,
+      sheet,
+      thumbnail: createCurrentThumbnail(),
+      importedAt: new Date().toISOString()
+    };
+    await saveLocalPack(pack);
+    state.localPacks.set(pack.id, pack);
+    imported++;
+    lastImportedId = pack.id;
+  }
+  renderLocalPacks();
+  if (lastImportedId) await selectLocalPack(lastImportedId);
+  showToast(t("toast.packImported", { count: imported }));
+}
+
 $$('[data-language]').forEach((button) => button.addEventListener("click", () => setLanguage(button.dataset.language)));
-$$('.concept-card').forEach((card) => card.addEventListener("click", () => selectConcept(card.dataset.concept)));
 elements.heroUpload.addEventListener("click", () => { elements.atlasInput.click(); location.hash = "studio"; });
 elements.dropZone.addEventListener("click", () => elements.atlasInput.click());
 elements.atlasInput.addEventListener("change", () => loadAtlas(elements.atlasInput.files[0]));
@@ -461,9 +750,16 @@ $("#copyManifest").addEventListener("click", () => copyText(elements.manifestCod
 $("#copyInstall").addEventListener("click", () => copyText(elements.installCommand.textContent));
 elements.exportFolder.addEventListener("click", () => exportFolder().catch((error) => error.name !== "AbortError" && showToast(error.message)));
 elements.downloadFiles.addEventListener("click", () => downloadFiles().catch((error) => showToast(error.message)));
+$("#importPackFolder").addEventListener("click", () => elements.packFolderInput.click());
+elements.packFolderInput.addEventListener("change", () => {
+  importLocalPackFolders(elements.packFolderInput.files)
+    .catch((error) => showToast(t("toast.packInvalid", { reason: error.message })))
+    .finally(() => { elements.packFolderInput.value = ""; });
+});
 
 selectConcept("nebby");
 setLanguage(state.language);
+restoreLocalPacks();
 renderStateTabs();
 updateManifest();
 requestAnimationFrame(drawFrame);
