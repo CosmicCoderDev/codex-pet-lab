@@ -22,7 +22,7 @@ const translations = {
     "hero.readyBadge": "Installable v2 pet · 73 animated frames",
     "concepts.eyebrow": "START WITH A PERSONALITY",
     "concepts.title": "An original anime character shelf",
-    "concepts.note": "Fourteen original directions, including three complete installable v2 pets. They borrow broad anime energy, never protected names, costumes, or character likenesses.",
+    "concepts.note": "Fourteen original directions, including four complete installable v2 pets. They borrow broad anime energy, never protected names, costumes, or character likenesses.",
     "concepts.ready": "Ready v2",
     "concepts.nebby": "Quiet cosmic cat",
     "concepts.byte": "Curious code bot",
@@ -128,7 +128,7 @@ const translations = {
     "hero.readyBadge": "可安装 v2 宠物 · 73 帧动画",
     "concepts.eyebrow": "先选择宠物性格",
     "concepts.title": "一整套原创动漫人物",
-    "concepts.note": "共 14 个原创人物方向，其中三个已完成为可安装 v2 宠物；只借鉴宽泛的动漫气质，不复制受保护的姓名、服装或角色形象。",
+    "concepts.note": "共 14 个原创人物方向，其中四个已完成为可安装 v2 宠物；只借鉴宽泛的动漫气质，不复制受保护的姓名、服装或角色形象。",
     "concepts.ready": "v2 成品",
     "concepts.nebby": "安静的星云猫",
     "concepts.byte": "好奇的代码机器人",
@@ -228,7 +228,7 @@ const translations = {
 
 const concepts = {
   nebby: { name: "Nebby", id: "nebby", category: "cute", color: "#4e3ca0", image: "./pets/nebby/preview.gif", bundledPack: "./pets/nebby/spritesheet.webp", description: "A quiet cosmic cat who keeps watch during deep-focus coding sessions.", zhDescription: "在深度专注编码时安静守护你的宇宙猫。" },
-  byte: { name: "Byte", id: "byte", category: "scifi", color: "#116b72", image: "./assets/byte.svg", description: "A curious code bot that lights up for new ideas.", zhDescription: "遇到新点子就会亮起来的好奇代码机器人。" },
+  byte: { name: "Byte", id: "byte", category: "scifi", color: "#116b72", image: "./pets/byte/preview.gif", bundledPack: "./pets/byte/spritesheet.webp", description: "A curious code bot that lights up for new ideas.", zhDescription: "遇到新点子就会亮起来的好奇代码机器人。" },
   momo: { name: "Momo", id: "momo", category: "cute", color: "#9f3f67", image: "./assets/momo.svg", description: "A cheerful candy fox for playful building days.", zhDescription: "让创作更轻松愉快的糖果狐。" },
   ember: { name: "Ember", id: "ember", category: "fantasy", color: "#a64025", image: "./assets/ember.svg", description: "A focused flame spirit for shipping the final fix.", zhDescription: "陪你专注完成最后修复的火焰精灵。" },
   kairo: { name: "Kairo", id: "kairo", category: "fighter", color: "#314fa5", image: "./pets/kairo/preview.gif", bundledPack: "./pets/kairo/spritesheet.webp", description: "An original cosmic energy fighter who trains between builds.", zhDescription: "在每次构建间隙修炼的原创宇宙能量战士。" },
@@ -264,6 +264,7 @@ const state = {
   conceptFilter: "all",
   localPacks: new Map(),
   activeLocalPack: null,
+  activeBundledConcept: null,
   file: null,
   image: null,
   objectUrl: null,
@@ -288,7 +289,7 @@ function setLanguage(language) {
   $$('[data-i18n]').forEach((node) => { node.textContent = t(node.dataset.i18n); });
   $$('[data-language]').forEach((button) => button.classList.toggle("active", button.dataset.language === language));
   const concept = concepts[state.concept];
-  if (!state.file && concept) elements.description.value = language === "zh" ? concept.zhDescription : concept.description;
+  if ((state.activeBundledConcept || !state.file) && concept) elements.description.value = language === "zh" ? concept.zhDescription : concept.description;
   renderConceptFilters();
   renderConcepts();
   renderLocalPacks();
@@ -300,6 +301,7 @@ function setLanguage(language) {
 function selectConcept(id) {
   state.concept = id;
   state.activeLocalPack = null;
+  state.activeBundledConcept = null;
   const concept = concepts[id];
   $$('.concept-card').forEach((card) => card.classList.toggle("active", card.dataset.concept === id));
   elements.heroPet.src = concept.image;
@@ -415,6 +417,7 @@ async function loadAtlas(file) {
   if (!file) return;
   if (state.objectUrl) URL.revokeObjectURL(state.objectUrl);
   state.file = file;
+  state.activeBundledConcept = null;
   state.format = null;
   state.valid = false;
   setCheck("type", ["image/png", "image/webp"].includes(file.type), file.type || "Unknown");
@@ -456,6 +459,7 @@ async function loadBundledPack(concept) {
   await loadAtlas(file);
   if (!state.valid || state.format?.key !== "v2") throw new Error(`The bundled ${concept.name} atlas failed v2 validation.`);
   state.activeLocalPack = null;
+  state.activeBundledConcept = concept.id;
   elements.petId.value = concept.id;
   elements.displayName.value = concept.name;
   elements.description.value = state.language === "zh" ? concept.zhDescription : concept.description;
@@ -679,6 +683,7 @@ async function selectLocalPack(id) {
   await loadAtlas(pack.sheet);
   if (!state.valid) throw new Error("Stored atlas no longer passes validation.");
   state.activeLocalPack = id;
+  state.activeBundledConcept = null;
   state.concept = null;
   elements.petId.value = pack.manifest.id;
   elements.displayName.value = pack.manifest.displayName;
