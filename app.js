@@ -22,7 +22,7 @@ const translations = {
     "hero.readyBadge": "Installable v2 pet · 73 animated frames",
     "concepts.eyebrow": "START WITH A PERSONALITY",
     "concepts.title": "An original anime character shelf",
-    "concepts.note": "Fourteen original directions for planning. They borrow broad anime energy, never protected names, costumes, or character likenesses.",
+    "concepts.note": "Fourteen original directions, including two complete installable v2 pets. They borrow broad anime energy, never protected names, costumes, or character likenesses.",
     "concepts.ready": "Ready v2",
     "concepts.nebby": "Quiet cosmic cat",
     "concepts.byte": "Curious code bot",
@@ -128,7 +128,7 @@ const translations = {
     "hero.readyBadge": "可安装 v2 宠物 · 73 帧动画",
     "concepts.eyebrow": "先选择宠物性格",
     "concepts.title": "一整套原创动漫人物",
-    "concepts.note": "共 14 个原创人物方向，只借鉴宽泛的动漫气质，不复制受保护的姓名、服装或角色形象。",
+    "concepts.note": "共 14 个原创人物方向，其中两个已完成为可安装 v2 宠物；只借鉴宽泛的动漫气质，不复制受保护的姓名、服装或角色形象。",
     "concepts.ready": "v2 成品",
     "concepts.nebby": "安静的星云猫",
     "concepts.byte": "好奇的代码机器人",
@@ -232,7 +232,7 @@ const concepts = {
   momo: { name: "Momo", id: "momo", category: "cute", color: "#9f3f67", image: "./assets/momo.svg", description: "A cheerful candy fox for playful building days.", zhDescription: "让创作更轻松愉快的糖果狐。" },
   ember: { name: "Ember", id: "ember", category: "fantasy", color: "#a64025", image: "./assets/ember.svg", description: "A focused flame spirit for shipping the final fix.", zhDescription: "陪你专注完成最后修复的火焰精灵。" },
   kairo: { name: "Kairo", id: "kairo", category: "fighter", color: "#314fa5", image: "./pets/kairo/preview.gif", bundledPack: "./pets/kairo/spritesheet.webp", description: "An original cosmic energy fighter who trains between builds.", zhDescription: "在每次构建间隙修炼的原创宇宙能量战士。" },
-  rook: { name: "Rook", id: "rook", category: "sports", color: "#9f314d", image: "./assets/rook.svg", description: "A red-haired court ace who never gives up on the last play.", zhDescription: "最后一球也绝不放弃的红发球场王牌。" },
+  rook: { name: "Rook", id: "rook", category: "sports", color: "#9f314d", image: "./pets/rook/preview.gif", bundledPack: "./pets/rook/spritesheet.webp", description: "An original red-haired court ace who never gives up on the last play.", zhDescription: "最后一球也绝不放弃的原创红发球场王牌。" },
   shino: { name: "Shino", id: "shino", category: "ninja", color: "#49405f", image: "./assets/shino.svg", description: "A quiet shadow runner for stealthy refactors.", zhDescription: "擅长安静完成重构的暗影忍者。" },
   aster: { name: "Aster", id: "aster", category: "fantasy", color: "#3d7794", image: "./assets/aster.svg", description: "A frost blade guardian with a precise review eye.", zhDescription: "审查精准的寒霜剑士。" },
   nova: { name: "Nova", id: "nova", category: "scifi", color: "#8c4f98", image: "./assets/nova.svg", description: "A neon mech pilot ready for high-risk deployments.", zhDescription: "随时准备执行高风险部署的霓虹机甲驾驶员。" },
@@ -454,7 +454,7 @@ async function loadBundledPack(concept) {
   const blob = await response.blob();
   const file = new File([blob], "spritesheet.webp", { type: blob.type || "image/webp" });
   await loadAtlas(file);
-  if (!state.valid || state.format?.key !== "v2") throw new Error("The bundled Kairo atlas failed v2 validation.");
+  if (!state.valid || state.format?.key !== "v2") throw new Error(`The bundled ${concept.name} atlas failed v2 validation.`);
   state.activeLocalPack = null;
   elements.petId.value = concept.id;
   elements.displayName.value = concept.name;
