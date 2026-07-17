@@ -6,23 +6,23 @@ Codex Pet Lab is an English-first, bilingual browser studio for turning a finish
 
 It validates the real atlas shape, previews every standard animation state, checks transparent unused cells, edits `pet.json`, and exports the two files Codex expects. All image processing stays in the browser.
 
-> This repository does not bundle fake “pets” made from static portraits. Kairo and Rook are completed installable v2 pets; the other built-in characters remain original planning concepts until their full animation atlases pass validation.
+> This repository does not bundle fake “pets” made from static portraits. Kairo, Rook, and Nebby are completed installable v2 pets; the other built-in characters remain original planning concepts until their full animation atlases pass validation.
 
 ## Ready-to-install pets
 
-| Kairo | Rook |
-| --- | --- |
-| <img src="./pets/kairo/preview.gif" alt="Kairo animated preview" width="180"> | <img src="./pets/rook/preview.gif" alt="Rook animated preview" width="180"> |
-| Cosmic energy fighter · 73 frames | Red-haired court ace · 73 frames |
-| [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.4.0/codex-pet-kairo-v2.zip) | [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.4.0/codex-pet-rook-v2.zip) |
+| Kairo | Rook | Nebby |
+| --- | --- | --- |
+| <img src="./pets/kairo/preview.gif" alt="Kairo animated preview" width="180"> | <img src="./pets/rook/preview.gif" alt="Rook animated preview" width="180"> | <img src="./pets/nebby/preview.gif" alt="Nebby animated preview" width="180"> |
+| Cosmic energy fighter · 73 frames | Red-haired court ace · 73 frames | Quiet cosmic cat · 73 frames |
+| [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.5.0/codex-pet-kairo-v2.zip) | [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.5.0/codex-pet-rook-v2.zip) | [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.5.0/codex-pet-nebby-v2.zip) |
 
-[Open the live studio](https://cosmiccoderdev.github.io/codex-pet-lab/) · [Download v0.4.0](https://github.com/CosmicCoderDev/codex-pet-lab/releases/tag/v0.4.0)
+[Open the live studio](https://cosmiccoderdev.github.io/codex-pet-lab/) · [Download v0.5.0](https://github.com/CosmicCoderDev/codex-pet-lab/releases/tag/v0.5.0)
 
 ## What it does
 
 - English and Simplified Chinese UI, with English as the default
 - Fourteen original anime, sports, fantasy, sci-fi, and mascot identity directions
-- Bundled Kairo and Rook v2 packages, each with 73 animated frames: nine standard states plus 16 look directions
+- Bundled Kairo, Rook, and Nebby v2 packages, each with 73 animated frames: nine standard states plus 16 look directions
 - Category filters for fighters, sports, ninja, fantasy, sci-fi, and cute characters
 - Private local character-pack import from a completed `pet.json + spritesheet` folder
 - Imported local packs persist in this browser through IndexedDB and never enter the GitHub repository
@@ -84,9 +84,10 @@ List and install either bundled pet directly from this repository:
 .\scripts\list-pets.ps1
 .\scripts\install-pet.ps1 -PetId kairo -Force
 .\scripts\install-pet.ps1 -PetId rook -Force
+.\scripts\install-pet.ps1 -PetId nebby -Force
 ```
 
-Alternatively, download a ZIP from the [v0.4.0 release](https://github.com/CosmicCoderDev/codex-pet-lab/releases/tag/v0.4.0), extract it, and pass the extracted folder through `-SourceDir`.
+Alternatively, download a ZIP from the [v0.5.0 release](https://github.com/CosmicCoderDev/codex-pet-lab/releases/tag/v0.5.0), extract it, and pass the extracted folder through `-SourceDir`.
 
 To replace an installed pet, add `-Force`. Then open **Settings > Pets** in Codex, select **Refresh**, and choose the pet.
 
