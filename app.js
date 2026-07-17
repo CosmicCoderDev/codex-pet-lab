@@ -6,6 +6,7 @@ import {
   STANDARD_ROWS,
   createManifest,
   detectFormat,
+  firstUnusedColumn,
   normalizePetId,
   validateMetadata
 } from "./src/pet-contract.js";
@@ -18,9 +19,11 @@ const translations = {
     "hero.upload": "Choose a sprite atlas",
     "hero.explore": "Explore original concepts",
     "hero.conceptBadge": "Original concept · not an atlas",
+    "hero.readyBadge": "Installable v2 pet · 73 animated frames",
     "concepts.eyebrow": "START WITH A PERSONALITY",
     "concepts.title": "An original anime character shelf",
     "concepts.note": "Fourteen original directions for planning. They borrow broad anime energy, never protected names, costumes, or character likenesses.",
+    "concepts.ready": "Ready v2",
     "concepts.nebby": "Quiet cosmic cat",
     "concepts.byte": "Curious code bot",
     "concepts.momo": "Cheerful candy fox",
@@ -122,9 +125,11 @@ const translations = {
     "hero.upload": "选择宠物图集",
     "hero.explore": "查看原创宠物构思",
     "hero.conceptBadge": "原创构思 · 不是可安装图集",
+    "hero.readyBadge": "可安装 v2 宠物 · 73 帧动画",
     "concepts.eyebrow": "先选择宠物性格",
     "concepts.title": "一整套原创动漫人物",
     "concepts.note": "共 14 个原创人物方向，只借鉴宽泛的动漫气质，不复制受保护的姓名、服装或角色形象。",
+    "concepts.ready": "v2 成品",
     "concepts.nebby": "安静的星云猫",
     "concepts.byte": "好奇的代码机器人",
     "concepts.momo": "活泼的糖果狐",
@@ -226,7 +231,7 @@ const concepts = {
   byte: { name: "Byte", id: "byte", category: "scifi", color: "#116b72", image: "./assets/byte.svg", description: "A curious code bot that lights up for new ideas.", zhDescription: "遇到新点子就会亮起来的好奇代码机器人。" },
   momo: { name: "Momo", id: "momo", category: "cute", color: "#9f3f67", image: "./assets/momo.svg", description: "A cheerful candy fox for playful building days.", zhDescription: "让创作更轻松愉快的糖果狐。" },
   ember: { name: "Ember", id: "ember", category: "fantasy", color: "#a64025", image: "./assets/ember.svg", description: "A focused flame spirit for shipping the final fix.", zhDescription: "陪你专注完成最后修复的火焰精灵。" },
-  kairo: { name: "Kairo", id: "kairo", category: "fighter", color: "#314fa5", image: "./assets/kairo.svg", description: "A cosmic energy fighter who trains between builds.", zhDescription: "在每次构建间隙修炼的宇宙能量战士。" },
+  kairo: { name: "Kairo", id: "kairo", category: "fighter", color: "#314fa5", image: "./pets/kairo/preview.gif", bundledPack: "./pets/kairo/spritesheet.webp", description: "An original cosmic energy fighter who trains between builds.", zhDescription: "在每次构建间隙修炼的原创宇宙能量战士。" },
   rook: { name: "Rook", id: "rook", category: "sports", color: "#9f314d", image: "./assets/rook.svg", description: "A red-haired court ace who never gives up on the last play.", zhDescription: "最后一球也绝不放弃的红发球场王牌。" },
   shino: { name: "Shino", id: "shino", category: "ninja", color: "#49405f", image: "./assets/shino.svg", description: "A quiet shadow runner for stealthy refactors.", zhDescription: "擅长安静完成重构的暗影忍者。" },
   aster: { name: "Aster", id: "aster", category: "fantasy", color: "#3d7794", image: "./assets/aster.svg", description: "A frost blade guardian with a precise review eye.", zhDescription: "审查精准的寒霜剑士。" },
@@ -248,7 +253,7 @@ const elements = {
   stateTabs: $("#stateTabs"), formatLabel: $("#formatLabel"), frameLabel: $("#frameLabel"), timeline: $("#timelineProgress"),
   petId: $("#petId"), displayName: $("#displayName"), description: $("#description"), manifestCode: $("#manifestCode"),
   folderName: $("#folderName"), installCommand: $("#installCommand"), exportFolder: $("#exportFolder"), downloadFiles: $("#downloadFiles"),
-  exportStatus: $("#exportStatus"), heroPet: $("#heroPet"), heroPetName: $("#heroPetName"), toast: $("#toast"),
+  exportStatus: $("#exportStatus"), heroPet: $("#heroPet"), heroPetName: $("#heroPetName"), heroPetBadge: $("#heroPetBadge"), toast: $("#toast"),
   conceptGrid: $("#conceptGrid"), conceptFilters: $("#conceptFilters"), packFolderInput: $("#packFolderInput"),
   localPackGrid: $("#localPackGrid"), localPackEmpty: $("#localPackEmpty")
 };
@@ -300,6 +305,9 @@ function selectConcept(id) {
   elements.heroPet.src = concept.image;
   elements.conceptFallback.src = concept.image;
   elements.heroPetName.textContent = concept.name;
+  const badgeKey = concept.bundledPack ? "hero.readyBadge" : "hero.conceptBadge";
+  elements.heroPetBadge.dataset.i18n = badgeKey;
+  elements.heroPetBadge.textContent = t(badgeKey);
   if (!state.file) {
     elements.petId.value = concept.id;
     elements.displayName.value = concept.name;
@@ -340,6 +348,12 @@ function renderConcepts() {
     image.src = concept.image;
     image.alt = "";
     art.append(image);
+    if (concept.bundledPack) {
+      const ready = document.createElement("span");
+      ready.className = "concept-ready";
+      ready.textContent = t("concepts.ready");
+      art.append(ready);
+    }
     const meta = document.createElement("span");
     meta.className = "concept-meta";
     const name = document.createElement("strong");
@@ -351,7 +365,10 @@ function renderConcepts() {
     mark.className = "select-mark";
     mark.textContent = "✓";
     button.append(art, meta, mark);
-    button.addEventListener("click", () => selectConcept(concept.id));
+    button.addEventListener("click", () => {
+      selectConcept(concept.id);
+      if (concept.bundledPack) loadBundledPack(concept).catch((error) => showToast(error.message));
+    });
     elements.conceptGrid.append(button);
   }
 }
@@ -379,7 +396,7 @@ function alphaAudit(image, format) {
 
   let unusedOpaque = 0;
   STANDARD_ROWS.forEach((row, rowIndex) => {
-    for (let column = row.frames; column < CELL.columns; column++) {
+    for (let column = firstUnusedColumn(rowIndex, format); column < CELL.columns; column++) {
       const startX = column * CELL.width;
       const startY = rowIndex * CELL.height;
       for (let y = startY; y < startY + CELL.height && unusedOpaque === 0; y++) {
@@ -429,6 +446,21 @@ async function loadAtlas(file) {
   renderStateTabs();
   refreshStatus();
   updateManifest();
+}
+
+async function loadBundledPack(concept) {
+  const response = await fetch(concept.bundledPack);
+  if (!response.ok) throw new Error(`Unable to load bundled pet (${response.status}).`);
+  const blob = await response.blob();
+  const file = new File([blob], "spritesheet.webp", { type: blob.type || "image/webp" });
+  await loadAtlas(file);
+  if (!state.valid || state.format?.key !== "v2") throw new Error("The bundled Kairo atlas failed v2 validation.");
+  state.activeLocalPack = null;
+  elements.petId.value = concept.id;
+  elements.displayName.value = concept.name;
+  elements.description.value = state.language === "zh" ? concept.zhDescription : concept.description;
+  updateManifest();
+  location.hash = "studio";
 }
 
 function availableStates() {

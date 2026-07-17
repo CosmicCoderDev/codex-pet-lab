@@ -8,7 +8,10 @@ const required = [
   "README.md",
   "README.zh-CN.md",
   "scripts/serve.mjs",
-  "scripts/install-pet.ps1"
+  "scripts/install-pet.ps1",
+  "pets/kairo/pet.json",
+  "pets/kairo/preview.gif",
+  "pets/kairo/spritesheet.webp"
 ];
 
 for (const file of required) await access(new URL(`../${file}`, import.meta.url));

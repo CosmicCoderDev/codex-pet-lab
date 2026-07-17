@@ -64,3 +64,8 @@ export function validateMetadata({ id, displayName, description }) {
 export function rowForState(stateId) {
   return STANDARD_ROWS.findIndex((row) => row.id === stateId);
 }
+
+export function firstUnusedColumn(rowIndex, format) {
+  if (format?.key === "v2" && rowIndex === 0) return 7;
+  return STANDARD_ROWS[rowIndex]?.frames ?? CELL.columns;
+}

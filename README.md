@@ -6,12 +6,13 @@ Codex Pet Lab is an English-first, bilingual browser studio for turning a finish
 
 It validates the real atlas shape, previews every standard animation state, checks transparent unused cells, edits `pet.json`, and exports the two files Codex expects. All image processing stays in the browser.
 
-> This repository does not bundle fake “pets” made from static portraits. The fourteen built-in characters are original planning concepts. They become installable only after a complete animated atlas passes validation.
+> This repository does not bundle fake “pets” made from static portraits. Kairo is the first completed installable v2 pet; the other built-in characters remain original planning concepts until their full animation atlases pass validation.
 
 ## What it does
 
 - English and Simplified Chinese UI, with English as the default
 - Fourteen original anime, sports, fantasy, sci-fi, and mascot identity directions
+- Bundled Kairo v2 package with 73 animated frames: nine standard states plus 16 look directions
 - Category filters for fighters, sports, ninja, fantasy, sci-fi, and cute characters
 - Private local character-pack import from a completed `pet.json + spritesheet` folder
 - Imported local packs persist in this browser through IndexedDB and never enter the GitHub repository
@@ -64,6 +65,12 @@ From the repository root:
 
 ```powershell
 .\scripts\install-pet.ps1 -SourceDir "C:\path\to\your-pet"
+```
+
+Install the bundled Kairo pet directly from this repository:
+
+```powershell
+.\scripts\install-pet.ps1 -SourceDir ".\pets\kairo" -Force
 ```
 
 To replace an installed pet, add `-Force`. Then open **Settings > Pets** in Codex, select **Refresh**, and choose the pet.

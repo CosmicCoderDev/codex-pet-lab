@@ -110,6 +110,7 @@ h1 { margin: 0; max-width: 760px; font-size: clamp(45px, 6vw, 78px); line-height
 .concept-card.active { background: linear-gradient(145deg, rgba(89,65,170,.35), rgba(20,23,37,.92)); border-color: #8067ee; box-shadow: inset 0 0 0 1px rgba(151,127,255,.18); }
 .concept-art { height: 200px; display: grid; place-items: center; border-radius: 14px; overflow: hidden; }
 .concept-art img { width: 130px; image-rendering: pixelated; transition: transform .2s; }
+.concept-ready { position: absolute; top: 24px; left: 24px; padding: 5px 8px; color: #10231f; background: #5be2cb; border-radius: 999px; font-size: 10px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; box-shadow: 0 6px 20px rgba(91,226,203,.22); }
 .concept-card:hover img { transform: scale(1.06); }
 .concept-art.nebby { background: radial-gradient(circle, #4e3ca0, #17142a 70%); }
 .concept-art.byte { background: radial-gradient(circle, #116b72, #0d2029 70%); }

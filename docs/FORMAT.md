@@ -25,6 +25,8 @@ Each cell is `192×208`. Use PNG or WebP with transparency. The upload limit doc
 
 Every cell after the last used column in a row must be fully transparent.
 
+In v2 only, row 0 column 6 contains the required neutral/default look frame. Row 0 column 7 remains transparent. The idle animation itself still uses columns 0–5.
+
 ## V2 look directions
 
 V2 adds two complete eight-frame rows in clockwise order:

@@ -4,3 +4,4 @@ Thumbs.db
 .vscode/
 dist/
 *.zip
+workbench/
