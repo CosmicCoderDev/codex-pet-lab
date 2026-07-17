@@ -6,23 +6,23 @@ Codex Pet Lab 是一个英文优先、支持中英文切换的浏览器宠物工
 
 它会校验真实图集尺寸、预览全部标准动画状态、检查未使用格子的透明度、编辑 `pet.json`，并导出 Codex 需要的两个文件。所有图像处理都在浏览器本地完成。
 
-> 本仓库不会把普通静态头像冒充成可安装宠物。Kairo、Rook、Nebby、Byte 和 Momo 都是已经完成的可安装 v2 宠物；其余内置角色仍是原创形象构思，完成全部动画并通过校验后才会变成成品。
+> 本仓库不会把普通静态头像冒充成可安装宠物。Kairo、Rook、Nebby、Byte、Momo 和 Ember 都是已经完成的可安装 v2 宠物；其余内置角色仍是原创形象构思，完成全部动画并通过校验后才会变成成品。
 
 ## 可直接安装的宠物
 
-| Kairo | Rook | Nebby | Byte | Momo |
-| --- | --- | --- | --- | --- |
-| <img src="./pets/kairo/preview.gif" alt="Kairo 动画预览" width="180"> | <img src="./pets/rook/preview.gif" alt="Rook 动画预览" width="180"> | <img src="./pets/nebby/preview.gif" alt="Nebby 动画预览" width="180"> | <img src="./pets/byte/preview.gif" alt="Byte 动画预览" width="180"> | <img src="./pets/momo/preview.gif" alt="Momo 动画预览" width="180"> |
-| 宇宙能量战士 · 73 帧 | 红发球场王牌 · 73 帧 | 安静宇宙猫 · 73 帧 | 好奇代码机器人 · 73 帧 | 活泼糖果狐 · 73 帧 |
-| [下载 ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.7.0/codex-pet-kairo-v2.zip) | [下载 ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.7.0/codex-pet-rook-v2.zip) | [下载 ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.7.0/codex-pet-nebby-v2.zip) | [下载 ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.7.0/codex-pet-byte-v2.zip) | [下载 ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.7.0/codex-pet-momo-v2.zip) |
+| Kairo | Rook | Nebby | Byte | Momo | Ember |
+| --- | --- | --- | --- | --- | --- |
+| <img src="./pets/kairo/preview.gif" alt="Kairo 动画预览" width="180"> | <img src="./pets/rook/preview.gif" alt="Rook 动画预览" width="180"> | <img src="./pets/nebby/preview.gif" alt="Nebby 动画预览" width="180"> | <img src="./pets/byte/preview.gif" alt="Byte 动画预览" width="180"> | <img src="./pets/momo/preview.gif" alt="Momo 动画预览" width="180"> | <img src="./pets/ember/preview.gif" alt="Ember 动画预览" width="180"> |
+| 宇宙能量战士 · 73 帧 | 红发球场王牌 · 73 帧 | 安静宇宙猫 · 73 帧 | 好奇代码机器人 · 73 帧 | 活泼糖果狐 · 73 帧 | 专注火焰精灵 · 73 帧 |
+| [下载 ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.8.0/codex-pet-kairo-v2.zip) | [下载 ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.8.0/codex-pet-rook-v2.zip) | [下载 ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.8.0/codex-pet-nebby-v2.zip) | [下载 ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.8.0/codex-pet-byte-v2.zip) | [下载 ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.8.0/codex-pet-momo-v2.zip) | [下载 ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.8.0/codex-pet-ember-v2.zip) |
 
-[打开在线工作室](https://cosmiccoderdev.github.io/codex-pet-lab/) · [下载 v0.7.0](https://github.com/CosmicCoderDev/codex-pet-lab/releases/tag/v0.7.0)
+[打开在线工作室](https://cosmiccoderdev.github.io/codex-pet-lab/) · [下载 v0.8.0](https://github.com/CosmicCoderDev/codex-pet-lab/releases/tag/v0.8.0)
 
 ## 功能
 
 - 完整英文和简体中文界面，默认语言为英文
 - 十四个原创动漫、运动、奇幻、科幻和吉祥物形象方向
-- 内置 Kairo、Rook、Nebby、Byte 与 Momo 五套 v2 成品包：每套 73 帧动画、9 种标准状态和 16 个环顾方向
+- 内置 Kairo、Rook、Nebby、Byte、Momo 与 Ember 六套 v2 成品包：每套 73 帧动画、9 种标准状态和 16 个环顾方向
 - 支持按格斗、运动、忍者、奇幻、科幻和可爱分类筛选
 - 可从完整的 `pet.json + spritesheet` 文件夹导入本地角色包
 - 本地角色包通过 IndexedDB 保存在当前浏览器，不会进入 GitHub 仓库
@@ -87,9 +87,10 @@ your-pet/
 .\scripts\install-pet.ps1 -PetId nebby -Force
 .\scripts\install-pet.ps1 -PetId byte -Force
 .\scripts\install-pet.ps1 -PetId momo -Force
+.\scripts\install-pet.ps1 -PetId ember -Force
 ```
 
-也可以从 [v0.7.0 Release](https://github.com/CosmicCoderDev/codex-pet-lab/releases/tag/v0.7.0) 下载 ZIP，解压后通过 `-SourceDir` 安装。
+也可以从 [v0.8.0 Release](https://github.com/CosmicCoderDev/codex-pet-lab/releases/tag/v0.8.0) 下载 ZIP，解压后通过 `-SourceDir` 安装。
 
 如需覆盖已安装宠物，增加 `-Force`。然后在 Codex 打开“设置 > 宠物”，点击“刷新”并选择宠物。
 
