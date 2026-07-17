@@ -1,7 +1,11 @@
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $true, ParameterSetName = 'Source')]
     [string]$SourceDir,
+
+    [Parameter(Mandatory = $true, ParameterSetName = 'Bundled')]
+    [ValidatePattern('^[a-z0-9-]+$')]
+    [string]$PetId,
 
     [string]$CodexHome = (Join-Path $env:USERPROFILE '.codex'),
 
@@ -9,7 +13,20 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$source = (Resolve-Path -LiteralPath $SourceDir).Path
+$sourceInput = if ($PSCmdlet.ParameterSetName -eq 'Bundled') {
+    Join-Path (Join-Path $PSScriptRoot '..\pets') $PetId
+} else {
+    $SourceDir
+}
+
+if (-not (Test-Path -LiteralPath $sourceInput -PathType Container)) {
+    if ($PSCmdlet.ParameterSetName -eq 'Bundled') {
+        throw "Unknown bundled pet '$PetId'. Run .\scripts\list-pets.ps1 to see available pets."
+    }
+    throw "Pet source directory not found: $sourceInput"
+}
+
+$source = (Resolve-Path -LiteralPath $sourceInput).Path
 $manifestPath = Join-Path $source 'pet.json'
 
 if (-not (Test-Path -LiteralPath $manifestPath -PathType Leaf)) {

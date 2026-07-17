@@ -1,0 +1,53 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 20
+
+      - name: Run contract tests
+        run: npm test
+
+      - name: Check project and bundled pets
+        run: npm run check
+
+      - name: List bundled pets
+        shell: pwsh
+        run: ./scripts/list-pets.ps1
+
+      - name: Smoke-test bundled installation
+        shell: pwsh
+        run: |
+          ./scripts/install-pet.ps1 -PetId kairo -CodexHome "$env:RUNNER_TEMP/kairo-codex-home" -Force
+          ./scripts/install-pet.ps1 -PetId rook -CodexHome "$env:RUNNER_TEMP/rook-codex-home" -Force
+
+      - name: Build release archives
+        shell: pwsh
+        run: ./scripts/package-bundled-pets.ps1
+
+      - name: Verify release archives
+        shell: pwsh
+        run: |
+          $required = @(
+            'dist/codex-pet-kairo-v2.zip',
+            'dist/codex-pet-rook-v2.zip',
+            'dist/SHA256SUMS.txt'
+          )
+          foreach ($file in $required) {
+            if (-not (Test-Path -LiteralPath $file -PathType Leaf)) { throw "Missing release artifact: $file" }
+          }

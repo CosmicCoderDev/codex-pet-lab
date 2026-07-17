@@ -7,11 +7,22 @@ const required = [
   "src/pet-contract.js",
   "README.md",
   "README.zh-CN.md",
+  "ASSET_POLICY.md",
+  "ASSET_POLICY.zh-CN.md",
+  "CONTRIBUTING.md",
+  "CONTRIBUTING.zh-CN.md",
   "scripts/serve.mjs",
   "scripts/install-pet.ps1",
+  "scripts/list-pets.ps1",
+  "scripts/package-bundled-pets.ps1",
+  "scripts/validate-bundled-pets.mjs",
   "pets/kairo/pet.json",
   "pets/kairo/preview.gif",
-  "pets/kairo/spritesheet.webp"
+  "pets/kairo/spritesheet.webp",
+  "pets/rook/pet.json",
+  "pets/rook/preview.gif",
+  "pets/rook/spritesheet.webp",
+  ".github/workflows/validate.yml"
 ];
 
 for (const file of required) await access(new URL(`../${file}`, import.meta.url));

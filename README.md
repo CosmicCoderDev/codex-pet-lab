@@ -8,6 +8,16 @@ It validates the real atlas shape, previews every standard animation state, chec
 
 > This repository does not bundle fake “pets” made from static portraits. Kairo and Rook are completed installable v2 pets; the other built-in characters remain original planning concepts until their full animation atlases pass validation.
 
+## Ready-to-install pets
+
+| Kairo | Rook |
+| --- | --- |
+| <img src="./pets/kairo/preview.gif" alt="Kairo animated preview" width="180"> | <img src="./pets/rook/preview.gif" alt="Rook animated preview" width="180"> |
+| Cosmic energy fighter · 73 frames | Red-haired court ace · 73 frames |
+| [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.4.0/codex-pet-kairo-v2.zip) | [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.4.0/codex-pet-rook-v2.zip) |
+
+[Open the live studio](https://cosmiccoderdev.github.io/codex-pet-lab/) · [Download v0.4.0](https://github.com/CosmicCoderDev/codex-pet-lab/releases/tag/v0.4.0)
+
 ## What it does
 
 - English and Simplified Chinese UI, with English as the default
@@ -41,6 +51,7 @@ Then open the local URL printed by the server.
 ```powershell
 npm test
 npm run check
+npm run check:pets
 ```
 
 ## Create a package
@@ -67,12 +78,15 @@ From the repository root:
 .\scripts\install-pet.ps1 -SourceDir "C:\path\to\your-pet"
 ```
 
-Install either bundled pet directly from this repository:
+List and install either bundled pet directly from this repository:
 
 ```powershell
-.\scripts\install-pet.ps1 -SourceDir ".\pets\kairo" -Force
-.\scripts\install-pet.ps1 -SourceDir ".\pets\rook" -Force
+.\scripts\list-pets.ps1
+.\scripts\install-pet.ps1 -PetId kairo -Force
+.\scripts\install-pet.ps1 -PetId rook -Force
 ```
+
+Alternatively, download a ZIP from the [v0.4.0 release](https://github.com/CosmicCoderDev/codex-pet-lab/releases/tag/v0.4.0), extract it, and pass the extracted folder through `-SourceDir`.
 
 To replace an installed pet, add `-Force`. Then open **Settings > Pets** in Codex, select **Refresh**, and choose the pet.
 
@@ -109,6 +123,8 @@ The current public ChatGPT documentation also describes custom pet creation and 
 - Copyrighted character packs may be imported locally only when you have the necessary rights or your use is otherwise permitted; the project does not redistribute them.
 - Passing structural validation does not replace visual QA. Always review identity consistency, motion, direction, clipping, and effects before sharing a pet.
 - This is a community project and is not an official OpenAI product.
+
+Read the full [asset policy](./ASSET_POLICY.md), [asset provenance](./docs/ASSET_PROVENANCE.md), and [contribution guide](./CONTRIBUTING.md) before publishing a pet.
 
 ## License
 

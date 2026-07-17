@@ -7,7 +7,9 @@
   "scripts": {
     "serve": "node scripts/serve.mjs",
     "test": "node tests/contract.test.mjs",
-    "check": "node scripts/check-project.mjs"
+    "check": "node scripts/check-project.mjs && node scripts/validate-bundled-pets.mjs",
+    "check:pets": "node scripts/validate-bundled-pets.mjs",
+    "package:pets": "pwsh -NoProfile -File scripts/package-bundled-pets.ps1"
   },
   "keywords": [
     "codex",
