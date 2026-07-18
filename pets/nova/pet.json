@@ -1,0 +1,7 @@
+{
+  "id": "nova",
+  "displayName": "Nova",
+  "description": "A neon mech pilot ready for high-risk deployments.",
+  "spriteVersionNumber": 2,
+  "spritesheetPath": "spritesheet.webp"
+}

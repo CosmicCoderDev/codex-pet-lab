@@ -6,7 +6,7 @@ Codex Pet Lab is an English-first, bilingual browser studio for turning a finish
 
 It validates the real atlas shape, previews every standard animation state, checks transparent unused cells, edits `pet.json`, and exports the two files Codex expects. All image processing stays in the browser.
 
-> This repository does not bundle fake “pets” made from static portraits. Kairo, Rook, Nebby, Byte, Momo, and Ember are completed installable v2 pets; the other built-in characters remain original planning concepts until their full animation atlases pass validation.
+> This repository does not bundle fake “pets” made from static portraits. Kairo, Rook, Nebby, Byte, Momo, Ember, Shino, Aster, and Nova are completed installable v2 pets; the other built-in characters remain original planning concepts until their full animation atlases pass validation.
 
 ## Ready-to-install pets
 
@@ -16,13 +16,19 @@ It validates the real atlas shape, previews every standard animation state, chec
 | Cosmic energy fighter · 73 frames | Red-haired court ace · 73 frames | Quiet cosmic cat · 73 frames | Curious code bot · 73 frames | Cheerful candy fox · 73 frames | Focused flame spirit · 73 frames |
 | [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.8.0/codex-pet-kairo-v2.zip) | [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.8.0/codex-pet-rook-v2.zip) | [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.8.0/codex-pet-nebby-v2.zip) | [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.8.0/codex-pet-byte-v2.zip) | [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.8.0/codex-pet-momo-v2.zip) | [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.8.0/codex-pet-ember-v2.zip) |
 
-[Open the live studio](https://cosmiccoderdev.github.io/codex-pet-lab/) · [Download v0.8.0](https://github.com/CosmicCoderDev/codex-pet-lab/releases/tag/v0.8.0)
+| Shino | Aster | Nova |
+| --- | --- | --- |
+| <img src="./pets/shino/preview.gif" alt="Shino animated preview" width="180"> | <img src="./pets/aster/preview.gif" alt="Aster animated preview" width="180"> | <img src="./pets/nova/preview.gif" alt="Nova animated preview" width="180"> |
+| Quiet shadow runner · 73 frames | Frost guardian · 73 frames | Neon mech pilot · 73 frames |
+| [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.9.0/codex-pet-shino-v2.zip) | [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.9.0/codex-pet-aster-v2.zip) | [Download ZIP](https://github.com/CosmicCoderDev/codex-pet-lab/releases/download/v0.9.0/codex-pet-nova-v2.zip) |
+
+[Open the live studio](https://cosmiccoderdev.github.io/codex-pet-lab/) · [Download v0.9.0](https://github.com/CosmicCoderDev/codex-pet-lab/releases/tag/v0.9.0)
 
 ## What it does
 
 - English and Simplified Chinese UI, with English as the default
 - Fourteen original anime, sports, fantasy, sci-fi, and mascot identity directions
-- Bundled Kairo, Rook, Nebby, Byte, Momo, and Ember v2 packages, each with 73 animated frames: nine standard states plus 16 look directions
+- Nine bundled v2 packages—Kairo, Rook, Nebby, Byte, Momo, Ember, Shino, Aster, and Nova—each with 73 animated frames: nine standard states plus 16 look directions
 - Category filters for fighters, sports, ninja, fantasy, sci-fi, and cute characters
 - Private local character-pack import from a completed `pet.json + spritesheet` folder
 - Imported local packs persist in this browser through IndexedDB and never enter the GitHub repository
@@ -88,9 +94,12 @@ List and install any bundled pet directly from this repository:
 .\scripts\install-pet.ps1 -PetId byte -Force
 .\scripts\install-pet.ps1 -PetId momo -Force
 .\scripts\install-pet.ps1 -PetId ember -Force
+.\scripts\install-pet.ps1 -PetId shino -Force
+.\scripts\install-pet.ps1 -PetId aster -Force
+.\scripts\install-pet.ps1 -PetId nova -Force
 ```
 
-Alternatively, download a ZIP from the [v0.8.0 release](https://github.com/CosmicCoderDev/codex-pet-lab/releases/tag/v0.8.0), extract it, and pass the extracted folder through `-SourceDir`.
+Alternatively, download a ZIP from the [v0.9.0 release](https://github.com/CosmicCoderDev/codex-pet-lab/releases/tag/v0.9.0), extract it, and pass the extracted folder through `-SourceDir`.
 
 To replace an installed pet, add `-Force`. Then open **Settings > Pets** in Codex, select **Refresh**, and choose the pet.
 
